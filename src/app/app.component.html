@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html class="h-100">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+  </head>
+
+  <body class="h-100">
+    <!-- Start of navbar -->
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-xs fixed-top bg-light">
+        <div class="mx-auto">
+          <strong>Help us find your account</strong>
+        </div>
+        <a id="exit" class="navbar-brand" href="javascript:void(0)"
+          >Exit <i class="fas fa-times-circle"></i
+        ></a>
+      </nav>
+    </div>
+    <!-- End of navbar -->
+
+    <br /><br /><br /><br />
+    <div class="container-fluid h-100">
+      <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-sm-5 col-md-6 col-lg-4">
+          <form autocomplete="off" [formGroup]="detailForm">
+            <div class="form-group">
+              <label>LAST NAME</label>
+              <input
+                type="text"
+                placeholder="Last Name"
+                class="form-control"
+                formControlName="last_name"
+                id="last_name"
+                minlength="1"
+                maxlength="30"
+              />
+              <div>
+                <p
+                  *ngIf="
+                    detailForm.controls.last_name?.errors?.required &&
+                    (detailForm.controls.last_name?.touched ||
+                      detailForm.controls.last_name?.dirty)
+                  "
+                  class="alert"
+                >
+                  {{ error.required }}
+                </p>
+
+                <p
+                  *ngIf="
+                    detailForm.controls.last_name?.errors?.pattern &&
+                    (detailForm.controls.last_name?.touched ||
+                      detailForm.controls.last_name?.dirty)
+                  "
+                  class="alert"
+                >
+                  {{ error.invalid }}
+                </p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>SSN</label>
+              <div class="inlineButton">
+                <input
+                  [type]="showInput ? 'text' : 'password'"
+                  placeholder="000-00-0000"
+                  class="form-control"
+                  formControlName="ssn"
+                  id="ssn"
+                  minlength="1"
+                  maxlength="9"
+                />
+                <button
+                  id="show"
+                  keypress="toggleDisplay()"
+                  (click)="toggleDisplay()"
+                >
+                  Show
+                </button>
+              </div>
+              <div>
+                <p
+                  *ngIf="
+                    detailForm.controls.ssn?.errors?.required &&
+                    (detailForm.controls.ssn?.touched ||
+                      detailForm.controls.ssn?.dirty)
+                  "
+                  class="alert"
+                >
+                  {{ error.required }}
+                </p>
+                <p
+                  *ngIf="
+                    detailForm.controls.ssn?.errors?.pattern &&
+                    (detailForm.controls.ssn?.touched ||
+                      detailForm.controls.ssn?.dirty)
+                  "
+                  class="alert"
+                >
+                  {{ error.invalid }}
+                </p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>DOB</label>
+              <div class="input-group inlineButton">
+                <input
+                  type="text"
+                  placeholder="MM/DD/YYYY"
+                  class="form-control"
+                  formControlName="dob"
+                  id="dob"
+                  [bsConfig]="{ dateInputFormat: 'MM/DD/YYYY' }"
+                  bsDatepicker
+                />
+                <label class="input-group-btn" for="dob"
+                  ><span class="btn btn-default">
+                    <i class="fas fa-calendar"></i
+                  ></span>
+                </label>
+              </div>
+              <div>
+                <p
+                  *ngIf="
+                    detailForm.controls.dob?.errors?.required &&
+                    (detailForm.controls.dob?.touched ||
+                      detailForm.controls.dob?.dirty)
+                  "
+                  class="alert"
+                >
+                  {{ error.required }}
+                </p>
+              </div>
+            </div>
+
+            <button
+              id="next"
+              type="submit"
+              [disabled]="detailForm.invalid"
+              class="form-control btn btn-primary"
+            >
+              Next
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

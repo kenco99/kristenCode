@@ -1,0 +1,45 @@
+input,
+input:focus {
+  outline: 0; /* I have also tried outline:none */
+  -webkit-appearance: none;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+button {
+  border-radius: 25px;
+}
+
+.navbar {
+  background-color: lightgrey;
+}
+.navbar-brand {
+  float: right !important;
+  color: black;
+  font-size: 1rem;
+}
+.inlineButton {
+  /* This bit sets up the horizontal layout */
+  display: flex;
+  flex-direction: row;
+  border: 1px solid lightgrey;
+  border-radius: 4.5px;
+}
+#ssn,
+#dob {
+  border: none;
+}
+#show {
+  background-color: white;
+  border: none;
+  outline: none;
+}
+.alert {
+  color: red;
+  font-weight: 500;
+  right: 20px;
+}
+button.btn[disabled] {
+  background-color: lightgrey;
+  border-color: lightgrey;
+}
